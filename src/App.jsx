@@ -8,6 +8,7 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Plans from "./components/Plans";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Services />
         <Plans />
         <Contact />
+        <Footer />
       </div>
     </>
   );
