@@ -3,6 +3,7 @@ import FontLoader from "./components/FontLoader";
 import Nav        from "./components/Nav";
 import { C } from "./constants";
 import Hero from "./components/Hero";
+import Marquee from "./components/Marquee";
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         overflowX: "hidden", minHeight: "100vh" }}>
         <Nav />
         <Hero />
+        <Marquee />
       </div>
     </>
   );
