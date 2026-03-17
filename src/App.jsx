@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
 import About from "./components/About";
 import Services from "./components/Services";
+import Plans from "./components/Plans";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Marquee />
         <About />
         <Services />
+        <Plans />
       </div>
     </>
   );
