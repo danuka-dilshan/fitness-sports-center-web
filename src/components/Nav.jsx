@@ -14,6 +14,7 @@ export default function Nav() {
   }, []);
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-redundant-roles
     <nav style={{
       position:"fixed", top:0, left:0, right:0, zIndex:200,
       display:"flex", alignItems:"center", justifyContent:"space-between",
@@ -21,10 +22,11 @@ export default function Nav() {
       background: scrolled ? "rgba(8,8,8,0.96)" : "transparent",
       backdropFilter: scrolled ? "blur(14px)" : "none",
       borderBottom: scrolled ? `1px solid ${C.brown}` : "1px solid transparent",
-      transition:"all .35s",
+      transition:"all .35s",backgroundColor: "#141103",
     }}>
       <img src={LOGO} alt="Fitness Sports Center" style={{ height:52, objectFit:"contain" }} />
 
+{/* Links */}
       <ul style={{ display:"flex", gap:"2.2rem", listStyle:"none", margin:0, padding:0 }} className="nav-links">
         {links.map(l => (
           <li key={l}>
@@ -39,11 +41,12 @@ export default function Nav() {
         ))}
       </ul>
 
+{/* CTA Button */}
       <a href="#contact" className="nav-cta" style={{
         display:"inline-block", fontSize:"0.92rem", fontWeight:700,
         letterSpacing:"0.06em", textTransform:"uppercase", fontFamily:"'Arial Black', Gadget, sans-serif",
         padding:"0.6rem 1.6rem", background:C.gold, color:C.black, textDecoration:"none",
-        transition:"background .2s",borderRadius:"6px",
+        transition:"background .2s",borderRadius:"10px",
       }}
       onMouseEnter={e=>e.target.style.background=C.goldDim}
       onMouseLeave={e=>e.target.style.background=C.gold}
@@ -56,6 +59,7 @@ export default function Nav() {
         {[0,1,2].map(i => <span key={i} style={{ display:"block", width:22, height:2, background:C.offwhite }}/>)}
       </button>
 
+{/* Mobile Menu */}
       {open && (
         <div style={{
           position:"fixed", top:68, left:0, right:0, bottom:0,
@@ -71,7 +75,7 @@ export default function Nav() {
           <a href="#contact" onClick={()=>setOpen(false)} style={{
             marginTop:"1rem", fontSize:"0.85rem", fontWeight:700, letterSpacing:"0.14em",
             textTransform:"uppercase", padding:"0.8rem 2rem",
-            background:C.gold, color:C.black, textDecoration:"none",borderRadius:"6px",
+            background:C.gold, color:C.black, textDecoration:"none",borderRadius:"10px",
           }}>Join Now</a>
         </div>
       )}
