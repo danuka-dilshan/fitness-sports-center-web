@@ -3,7 +3,8 @@ import { useEffect } from "react";
 export default function FontLoader() {
   useEffect(() => {
     const link = document.createElement("link");
-    link.href = "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500&display=swap";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }, []);
