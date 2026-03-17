@@ -13,12 +13,9 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   return (
@@ -27,15 +24,14 @@ export default function Nav() {
         .nav-links, .nav-cta { display: flex; }
         .burger { display: none !important; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           .nav-links, .nav-cta { display: none !important; }
           .burger { display: flex !important; }
         }
 
         .burger-bar {
           display: block;
-          width: 24px;
-          height: 2px;
+          width: 24px; height: 2px;
           background: ${C.offwhite};
           transition: transform 0.3s, opacity 0.3s;
           transform-origin: center;
@@ -52,14 +48,11 @@ export default function Nav() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 0;
           z-index: 199;
           transform: translateX(100%);
           transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
         }
-        .mobile-menu.is-open {
-          transform: translateX(0);
-        }
+        .mobile-menu.is-open { transform: translateX(0); }
 
         .mobile-link {
           width: 100%;
@@ -75,19 +68,15 @@ export default function Nav() {
           border-bottom: 1px solid rgba(242,239,228,0.07);
           transition: color 0.2s, background 0.2s;
         }
-        .mobile-link:first-child {
-          border-top: 1px solid rgba(242,239,228,0.07);
-        }
-        .mobile-link:hover {
-          color: ${C.gold};
-          background: rgba(207,160,16,0.05);
-        }
+        .mobile-link:first-child { border-top: 1px solid rgba(242,239,228,0.07); }
+        .mobile-link:hover { color: ${C.gold}; background: rgba(207,160,16,0.05); }
 
         .mobile-cta {
           margin-top: 2rem;
-          font-size: 0.9rem;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.78rem;
           font-weight: 700;
-          letter-spacing: 0.14em;
+          letter-spacing: 0.18em;
           text-transform: uppercase;
           padding: 0.9rem 2.8rem;
           background: ${C.gold};
@@ -97,102 +86,69 @@ export default function Nav() {
           transition: background 0.2s;
         }
         .mobile-cta:hover { background: ${C.goldDim}; }
+
+        .nav-link-item {
+          font-size: 0.72rem;
+          font-weight: 600;
+          letter-spacing: 0.16em;
+          font-family: 'Montserrat', sans-serif;
+          text-transform: uppercase;
+          color: ${C.gray};
+          text-decoration: none;
+          transition: color .2s;
+        }
+        .nav-link-item:hover { color: ${C.gold}; }
       `}</style>
 
-      <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 200,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 5vw",
-          height: 68,
-          background: scrolled || open ? "rgba(8,8,8,0.96)" : "transparent",
-          backdropFilter: scrolled || open ? "blur(14px)" : "none",
-          borderBottom:
-            scrolled || open ? `1px solid ${C.brown}` : "1px solid transparent",
-          transition: "all .35s",
-        }}
-      >
+      <nav style={{
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "0 5vw", height: 68,
+        background: scrolled || open
+          ? "rgba(8,8,8,0.96)"
+          : "rgba(8,8,8,0.6)",
+        backdropFilter: "blur(14px)",
+        borderBottom: `1px solid ${scrolled || open ? C.charcoal : "rgba(242,239,228,0.06)"}`,
+        transition: "all .35s",
+      }}>
+
         {/* Logo */}
-        <img
-          src={LOGO}
-          alt="Fitness Sports Center"
-          style={{ height: 52, objectFit: "contain", zIndex: 201 }}
-        />
+        <img src={LOGO} alt="Fitness Sports Center"
+          style={{ height: 52, objectFit: "contain", zIndex: 201 }} />
 
         {/* Desktop Links */}
-        <ul
-          className="nav-links"
-          style={{
-            gap: "2.2rem",
-            listStyle: "none",
-            margin: 0,
-            padding: 0,
-          }}
-        >
-          {links.map((l) => (
+        <ul className="nav-links" style={{
+          gap: "2rem", listStyle: "none", margin: 0, padding: 0,
+        }}>
+          {links.map(l => (
             <li key={l}>
-              <a
-                href={`#${l.toLowerCase()}`}
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 550,
-                  letterSpacing: "0.12em",
-                  fontFamily: "'Montserrat', sans-serif",
-                  textTransform: "uppercase",
-                  color: C.gray,
-                  textDecoration: "none",
-                  transition: "color .2s",
-                }}
-                onMouseEnter={(e) => (e.target.style.color = C.gold)}
-                onMouseLeave={(e) => (e.target.style.color = C.gray)}
-              >
-                {l}
-              </a>
+              <a href={`#${l.toLowerCase()}`} className="nav-link-item">{l}</a>
             </li>
           ))}
         </ul>
 
         {/* Desktop CTA */}
-        <a
-          href="#contact"
-          className="nav-cta"
-          style={{
-            fontSize: "0.92rem",
-            fontWeight: 700,
-            letterSpacing: "0.06em",
-            textTransform: "uppercase",
-            fontFamily: "'Arial Black', Gadget, sans-serif",
-            padding: "0.6rem 1.6rem",
-            background: C.gold,
-            color: C.black,
-            textDecoration: "none",
-            transition: "background .2s",
-            borderRadius: "10px",
-          }}
-          onMouseEnter={(e) => (e.target.style.background = C.goldDim)}
-          onMouseLeave={(e) => (e.target.style.background = C.gold)}
-        >
-          Join Now
-        </a>
+        <a href="#contact" className="nav-cta" style={{
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: "0.72rem", fontWeight: 700,
+          letterSpacing: "0.16em", textTransform: "uppercase",
+          padding: "0.65rem 1.6rem",
+          background: C.gold, color: C.black,
+          textDecoration: "none", transition: "background .2s",
+          borderRadius: "8px",
+        }}
+        onMouseEnter={e => e.target.style.background = C.goldDim}
+        onMouseLeave={e => e.target.style.background = C.gold}
+        >Join Now</a>
 
         {/* Burger */}
         <button
           className={`burger${open ? " is-open" : ""}`}
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => setOpen(o => !o)}
           style={{
-            flexDirection: "column",
-            gap: 5,
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: 6,
-            zIndex: 201,
+            flexDirection: "column", gap: 5,
+            background: "none", border: "none",
+            cursor: "pointer", padding: 6, zIndex: 201,
           }}
           aria-label="Toggle menu"
         >
@@ -204,21 +160,11 @@ export default function Nav() {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu${open ? " is-open" : ""}`}>
-        {links.map((l) => (
-          <a
-            key={l}
-            href={`#${l.toLowerCase()}`}
-            className="mobile-link"
-            onClick={() => setOpen(false)}
-          >
-            {l}
-          </a>
+        {links.map(l => (
+          <a key={l} href={`#${l.toLowerCase()}`}
+            className="mobile-link" onClick={() => setOpen(false)}>{l}</a>
         ))}
-        <a
-          href="#contact"
-          className="mobile-cta"
-          onClick={() => setOpen(false)}
-        >
+        <a href="#contact" className="mobile-cta" onClick={() => setOpen(false)}>
           Join Now
         </a>
       </div>
