@@ -53,8 +53,8 @@ export default function Hero() {
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: `linear-gradient(rgba(207,160,16,0.04) 2px, transparent 1px),
-          linear-gradient(90deg, rgba(207,160,16,0.04) 2px, transparent 1px)`,
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.04) 3px, transparent 5px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 5px, transparent 3px)`,
           backgroundSize: "55px 55px",
         }}
       />
@@ -90,7 +90,7 @@ export default function Hero() {
         className="hero-image-wrap"
         style={{
           position: "absolute",
-          right: "-5vw",
+          right: "-0vw",
           top: "48%",
           transform: "translateY(-50%)",
           userSelect: "none",

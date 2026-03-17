@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { LOGO, C } from "../constants";
 
-const links = ["About", "Services", "Plans", "Trainers", "Contact"];
+const links = ["About", "Services", "Plans", "Contact"];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
