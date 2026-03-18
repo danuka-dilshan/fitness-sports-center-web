@@ -6,7 +6,7 @@ A modern, fully responsive gym website built with **React + Vite**. Features rea
 
 ## 🚀 Live Demo
 
-[https://fitness-sports-center-web.vercel.app](https://fitness-sports-center-web.vercel.app)
+[https://fitnesscenter-eight.vercel.app/](https://fitnesscenter-eight.vercel.app/)
 
 ---
 
