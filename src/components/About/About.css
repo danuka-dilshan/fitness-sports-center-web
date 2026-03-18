@@ -1,0 +1,209 @@
+/* ── About Section ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  padding: 8rem 5vw;
+}
+
+.about-image-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--color-brown);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image-wrap img {
+  width: 85%;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.about-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(8, 8, 8, 0.85) 100%);
+}
+
+.about-image-label {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 8rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  line-height: 1.2;
+}
+
+.about-image-container {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.about-founded {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--color-gold);
+  padding: 1.5rem 2rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  color: var(--color-black);
+  z-index: 2;
+}
+
+.about-founded-year {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.about-founded-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.about-eyebrow-line {
+  width: 24px;
+  height: 2px;
+  background: var(--color-gold);
+  display: block;
+}
+
+.about-heading {
+  font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0.015em;
+  color: var(--color-offwhite);
+  margin: 0 0 1.5rem;
+}
+
+.about-body {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-gray);
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.about-body:last-of-type {
+  margin-bottom: 2.5rem;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--color-charcoal);
+}
+
+.about-feature-item {
+  background: var(--color-black);
+  padding: 1.5rem;
+}
+
+.about-feature-abbr {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-gold);
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.about-feature-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-offwhite);
+  margin-bottom: 0.4rem;
+}
+
+.about-feature-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-gray);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 4rem !important;
+    padding: 5rem 5vw !important;
+  }
+  .about-image-wrap {
+    aspect-ratio: 4 / 3 !important;
+  }
+  .about-image-label {
+    font-size: clamp(0.85rem, 4vw, 1.2rem) !important;
+    right: 7rem !important;
+    bottom: 1rem !important;
+    left: 1rem !important;
+  }
+  .about-founded {
+    padding: 1rem 1.2rem !important;
+  }
+  .about-founded-year {
+    font-size: 2.2rem !important;
+  }
+  .about-features {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-grid {
+    padding: 4rem 4vw !important;
+    gap: 3.5rem !important;
+  }
+  .about-image-wrap {
+    aspect-ratio: 3 / 2 !important;
+  }
+  .about-image-label {
+    font-size: clamp(0.75rem, 3.5vw, 1rem) !important;
+    right: 6.5rem !important;
+  }
+  .about-founded {
+    padding: 0.8rem 1rem !important;
+  }
+  .about-founded-year {
+    font-size: 1.8rem !important;
+  }
+  .about-features {
+    grid-template-columns: 1fr !important;
+  }
+}

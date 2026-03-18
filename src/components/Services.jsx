@@ -21,12 +21,12 @@ const services = [
   {
     num: "04",
     title: "Yoga & Mobility",
-    desc: "Classes focusing on flexibility, recovery, and mind-body connection — essential for any routine.",
+    desc: "Classes focusing on flexibility, recovery, and mind-body connection - essential for any routine.",
   },
   {
     num: "05",
     title: "Group Classes",
-    desc: "48+ weekly sessions — CrossFit, spin, boxing, Pilates — led by energising coaches.",
+    desc: "48+ weekly sessions - CrossFit, spin, boxing, Pilates - led by energising coaches.",
   },
   {
     num: "06",
@@ -103,6 +103,7 @@ export default function Services() {
                   height: 2,
                   background: C.gold,
                   display: "block",
+                  fontFamily: "'Montserrat', sans-serif",
                 }}
               />
               What We Offer
@@ -111,10 +112,11 @@ export default function Services() {
           <Reveal delay={0.1}>
             <h2
               style={{
-                fontFamily: "'Barlow Condensed',sans-serif",
+                fontFamily: "'Bebas Neue', 'Barlow Condensed', sans-serif",
                 fontSize: "clamp(2.8rem,6vw,5.5rem)",
                 fontWeight: 800,
                 lineHeight: 0.95,
+                letterSpacing: "0.015em",
                 color: C.offwhite,
                 margin: 0,
               }}
@@ -181,7 +183,7 @@ export default function Services() {
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
                     fontWeight: 700,
-                    fontSize: "0.7rem",
+                    fontSize: "0.9rem",
                     letterSpacing: "0.18em",
                     color: C.gold,
                     marginBottom: "1.5rem",
@@ -193,7 +195,7 @@ export default function Services() {
 
                 <h3
                   style={{
-                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontFamily: "'Lato', sans-serif",
                     fontWeight: 800,
                     fontSize: "clamp(1.2rem, 2vw, 1.45rem)",
                     letterSpacing: "0.03em",
@@ -218,8 +220,8 @@ export default function Services() {
 
                 <p
                   style={{
-                    fontFamily: "'Barlow', sans-serif",
-                    fontSize: "0.85rem",
+                    fontFamily: "'Lato', sans-serif",
+                    fontSize: "1rem",
                     fontWeight: 300,
                     lineHeight: 1.75,
                     color: C.gray,

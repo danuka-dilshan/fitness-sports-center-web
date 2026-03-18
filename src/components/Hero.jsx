@@ -52,60 +52,53 @@ export default function Hero() {
           justify-content: flex-end;
         }
 
+        .hero-buttons {
+          display: flex;
+          gap: 1rem;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+
         /* ── MOBILE ── */
         @media (max-width: 768px) {
           .hero-section {
-            flex-direction: column !important;
             align-items: flex-start !important;
             padding: 0 !important;
             min-height: 100vh !important;
+            justify-content: flex-end !important;
+            flex-direction: column !important;
           }
 
-          /* Image wrapper stays absolute but only covers top portion */
           .hero-image-wrap {
             position: absolute !important;
             top: 0 !important;
             left: 0 !important;
             right: 0 !important;
             bottom: 0 !important;
-            height: 100% !important;
             z-index: 1 !important;
           }
           .hero-image-wrap img {
-            object-position: 60% top !important;
-            opacity: 1 !important;
+            object-position: 70% top !important;
           }
 
-          /* Grid stays absolute behind image — no change needed */
-
-          /* Strong dark overlay so text is readable over image */
           .hero-fade-bottom {
             background: linear-gradient(
               to bottom,
-              rgba(8,8,8,0.2) 0%,
-              rgba(8,8,8,0.5) 35%,
-              rgba(8,8,8,0.92) 65%,
-              rgba(8,8,8,1) 100%
-            ) !important;
-          }
-          .hero-fade-left {
-            background: linear-gradient(
-              to right,
-              rgba(8,8,8,0.9) 0%,
-              rgba(8,8,8,0.6) 50%,
-              transparent 100%
+              rgba(8,8,8,0.0) 0%,
+              rgba(8,8,8,0.3) 30%,
+              rgba(8,8,8,0.85) 55%,
+              rgba(8,8,8,1) 72%
             ) !important;
           }
 
-          /* Content */
           .hero-bottom {
             position: relative !important;
+            z-index: 3 !important;
             flex-direction: column !important;
             align-items: flex-start !important;
             width: 100% !important;
-            padding: 55vw 5vw 6rem !important;
+            padding: 0 5vw 2.5rem !important;
             gap: 0 !important;
-            z-index: 3 !important;
           }
 
           .hero-main {
@@ -114,61 +107,98 @@ export default function Hero() {
           }
 
           .hero-h1 {
-            font-size: clamp(3rem, 14vw, 5rem) !important;
-            margin-bottom: 1rem !important;
+            font-size: clamp(3.4rem, 16vw, 5.5rem) !important;
+            margin-bottom: 0.8rem !important;
+            line-height: 0.88 !important;
           }
 
+          .hero-body-text {
+            font-size: 0.9rem !important;
+            margin-bottom: 1.6rem !important;
+            max-width: 100% !important;
+          }
+
+          /* Buttons: side by side, not full width */
+          .hero-buttons {
+            flex-wrap: nowrap !important;
+            gap: 0.75rem !important;
+          }
+          .hero-btn-primary,
+          .hero-btn-secondary {
+            padding: 0.85rem 1.6rem !important;
+            font-size: 0.72rem !important;
+          }
+
+          /* Stats: out of absolute, 3-col grid */
           .hero-stats {
             position: relative !important;
             bottom: auto !important;
             right: auto !important;
-            justify-content: flex-start !important;
-            margin-top: 1.5rem !important;
             width: 100% !important;
-            gap: 1.5rem !important;
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+            gap: 0 !important;
+            flex-wrap: nowrap !important;
+            margin-top: 1.8rem !important;
+            padding-top: 1.4rem !important;
+            border-top: 1px solid rgba(242,239,228,0.12) !important;
           }
           .hero-stats > div {
             text-align: left !important;
+            padding: 0 0.8rem !important;
+          }
+          .hero-stats > div:first-child {
+            padding-left: 0 !important;
+          }
+          .hero-stats > div:last-child {
+            padding-right: 0 !important;
+          }
+          .hero-stats > div:not(:last-child) {
+            border-right: 1px solid rgba(242,239,228,0.12) !important;
+          }
+          .hero-stat-number {
+            font-size: 2.2rem !important;
           }
         }
 
         @media (max-width: 480px) {
-          .hero-image-wrap img {
-            object-position: 55% top !important;
-          }
-          .hero-bottom {
-            padding-top: 60vw !important;
-          }
           .hero-h1 {
-            font-size: clamp(2.8rem, 13vw, 4rem) !important;
+            font-size: clamp(3rem, 15vw, 4.5rem) !important;
           }
-          .hero-stats {
-            gap: 1rem !important;
+          .hero-stat-number {
+            font-size: 1.9rem !important;
+          }
+          .hero-stats > div {
+            padding: 0 0.5rem !important;
+          }
+          .hero-stats > div:first-child {
+            padding-left: 0 !important;
           }
         }
       `}</style>
 
       <section id="hero" className="hero-section">
 
-        {/* Grid background — z0, behind everything */}
+        {/* Grid background */}
         <div
-          className="hero-grid"
           style={{
             position: "absolute", inset: 0, zIndex: 0,
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.04) 3px, transparent 5px),
-              linear-gradient(90deg, rgba(255,255,255,0.04) 5px, transparent 3px)
+              linear-gradient(rgba(255,255,255,0.1) 3px, transparent 5px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 5px, transparent 3px)
             `,
             backgroundSize: "55px 55px",
           }}
         />
 
-        {/* Hero image — z1, on top of grid */}
+        {/* Hero image */}
         <div className="hero-image-wrap">
           <img src={imageHero} alt="Fitness Sports Center" />
         </div>
 
-        {/* Bottom fade — z2 */}
+        {/* Bottom fade */}
         <div
           className="hero-fade-bottom"
           style={{
@@ -177,7 +207,7 @@ export default function Hero() {
           }}
         />
 
-        {/* Left fade — z2 */}
+        {/* Left fade */}
         <div
           className="hero-fade-left"
           style={{
@@ -186,9 +216,8 @@ export default function Hero() {
           }}
         />
 
-        {/* Gold radial — z2 */}
+        {/* Gold radial */}
         <div
-          className="hero-radial"
           style={{
             position: "absolute", top: "-15vh", right: "-10vw",
             width: "60vw", height: "60vw", maxWidth: 700,
@@ -197,7 +226,7 @@ export default function Hero() {
           }}
         />
 
-        {/* Bottom row: content left + stats right */}
+        {/* Bottom row */}
         <div
           className="hero-bottom"
           style={{
@@ -227,29 +256,34 @@ export default function Hero() {
             </h1>
 
             {/* Body */}
-            <p style={{
-              fontFamily: "'Lato', sans-serif",
-              fontSize: "1rem", fontWeight: 300,
-              lineHeight: 1.75, color: C.gray,
-              maxWidth: 460, marginBottom: "2.5rem",
-              letterSpacing: "0.01em",
-            }}>
+            <p
+              className="hero-body-text"
+              style={{
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "1rem", fontWeight: 300,
+                lineHeight: 1.75, color: C.gray,
+                maxWidth: 460, marginBottom: "2.5rem",
+                letterSpacing: "0.01em",
+              }}
+            >
               A gym built for those who refuse to settle. Professional coaching,
               world-class equipment, and a community that pushes you past every limit.
             </p>
 
             {/* Buttons */}
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+            <div className="hero-buttons">
               <a
                 href="#plans"
+                className="hero-btn-primary"
                 style={{
                   display: "inline-block",
                   fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "0.78rem", fontWeight: 900,
+                  fontSize: "0.95rem", fontWeight: 900,
                   letterSpacing: "0.15em", textTransform: "uppercase",
                   padding: "1rem 2.2rem", background: C.gold,
                   color: C.black, textDecoration: "none",
                   transition: "background .2s", borderRadius: "10px",
+                  whiteSpace: "nowrap",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = C.goldDim)}
                 onMouseLeave={(e) => (e.currentTarget.style.background = C.gold)}
@@ -258,15 +292,17 @@ export default function Hero() {
               </a>
               <a
                 href="#about"
+                className="hero-btn-secondary"
                 style={{
                   display: "inline-block",
                   fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "0.78rem", fontWeight: 700,
+                  fontSize: "0.95rem", fontWeight: 700,
                   letterSpacing: "0.15em", textTransform: "uppercase",
-                  padding: "1rem 2.2rem",
+                  padding: "1.18rem 3.3rem",
                   border: "1px solid rgba(242,239,228,0.2)",
                   color: C.offwhite, textDecoration: "none",
                   transition: "border-color .2s", borderRadius: "10px",
+                  whiteSpace: "nowrap",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.borderColor = C.offwhite)}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(242,239,228,0.2)")}
@@ -284,11 +320,14 @@ export default function Hero() {
               ["18", "Trainers"],
             ].map(([n, l]) => (
               <div key={l} style={{ textAlign: "right" }}>
-                <div style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontWeight: 800, fontSize: "2.8rem",
-                  lineHeight: 1, color: C.gold,
-                }}>
+                <div
+                  className="hero-stat-number"
+                  style={{
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontWeight: 800, fontSize: "2.8rem",
+                    lineHeight: 1, color: C.gold,
+                  }}
+                >
                   {n}
                 </div>
                 <div style={{

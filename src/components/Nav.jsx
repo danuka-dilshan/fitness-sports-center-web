@@ -124,7 +124,7 @@ export default function Nav() {
         <img
           src={LOGO}
           alt="Fitness Sports Center"
-          style={{ height: 52, objectFit: "contain", zIndex: 201 }}
+          style={{ height: 70, objectFit: "contain", zIndex: 201 }}
         />
 
         {/* Desktop Links */}
@@ -151,9 +151,9 @@ export default function Nav() {
           href="#contact"
           className="nav-cta"
           style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: "0.9rem",
-            fontWeight: 900,
+            fontFamily: " 'Montserrat', sans-serif",
+            fontSize: "0.95rem",
+            fontWeight: 700,
             letterSpacing: "0.16em",
             textTransform: "uppercase",
             padding: "0.65rem 1.6rem",

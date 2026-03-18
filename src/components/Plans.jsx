@@ -54,9 +54,9 @@ function PlanBtn({ featured }) {
         width: "100%",
         textAlign: "center",
         fontFamily: "'Montserrat', sans-serif",
-        fontSize: "0.72rem",
+        fontSize: "0.95rem",
         fontWeight: 700,
-        letterSpacing: "0.18em",
+        letterSpacing: "0.15em",
         textTransform: "uppercase",
         padding: "0.95rem",
         textDecoration: "none",
@@ -64,7 +64,7 @@ function PlanBtn({ featured }) {
         color: featured ? C.black : h ? C.gold : C.offwhite,
         border: featured ? "none" : `1px solid rgba(242,239,228,0.25)`,
         transition: "all .2s",
-        borderRadius: "4px",
+        borderRadius: "6px",
         boxSizing: "border-box",
       }}
       onMouseEnter={() => setH(true)}
@@ -95,7 +95,7 @@ export default function Plans() {
             display: "inline-flex",
             alignItems: "center",
             gap: "0.7rem",
-            fontSize: "0.68rem",
+            fontSize: "0.8rem",
             fontWeight: 600,
             letterSpacing: "0.24em",
             textTransform: "uppercase",
@@ -133,7 +133,7 @@ export default function Plans() {
             lineHeight: 0.95,
             color: C.offwhite,
             margin: "0 0 1rem",
-            letterSpacing: "0.01em",
+            letterSpacing: "0.015em",
           }}
         >
           CHOOSE YOUR
@@ -145,8 +145,8 @@ export default function Plans() {
       <Reveal delay={0.2}>
         <p
           style={{
-            fontFamily: "'Barlow', sans-serif",
-            fontSize: "0.95rem",
+            fontFamily: "'Lato', sans-serif",
+            fontSize: "1rem",
             fontWeight: 300,
             color: C.gray,
             marginBottom: "4rem",
@@ -191,17 +191,17 @@ export default function Plans() {
                 <div
                   style={{
                     position: "absolute",
-                    top: "-1px",
+                    top: "0.01rem",
                     left: "50%",
                     transform: "translateX(-50%)",
                     background: C.gold,
                     fontFamily: "'Montserrat', sans-serif",
-                    fontSize: "0.58rem",
+                    fontSize: "0.78rem",
                     fontWeight: 700,
-                    letterSpacing: "0.18em",
+                    letterSpacing: "0.10em",
                     textTransform: "uppercase",
                     color: C.black,
-                    padding: "0.3rem 1rem",
+                    padding: "0.4rem 1.3rem",
                     borderRadius: "0 0 6px 6px",
                   }}
                 >
@@ -214,8 +214,8 @@ export default function Plans() {
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 600,
-                  fontSize: "0.68rem",
-                  letterSpacing: "0.22em",
+                  fontSize: "0.8rem",
+                  letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   color: p.featured ? C.gold : "rgba(242,239,228,0.4)",
                   marginBottom: "1.5rem",
@@ -230,7 +230,7 @@ export default function Plans() {
                 style={{
                   display: "flex",
                   alignItems: "flex-start",
-                  gap: "2px",
+                  gap: "5px",
                   marginBottom: "1.8rem",
                 }}
               >
@@ -252,7 +252,7 @@ export default function Plans() {
                     fontSize: "clamp(3.5rem,7vw,4.5rem)",
                     lineHeight: 1,
                     color: C.offwhite,
-                    letterSpacing: "-0.02em",
+                    letterSpacing: "0.035em",
                   }}
                 >
                   {p.price}
@@ -260,7 +260,7 @@ export default function Plans() {
                 <span
                   style={{
                     fontFamily: "'Barlow', sans-serif",
-                    fontWeight: 300,
+                    fontWeight: 500,
                     fontSize: "0.8rem",
                     color: "rgba(242,239,228,0.4)",
                     alignSelf: "flex-end",
@@ -295,8 +295,8 @@ export default function Plans() {
                   <li
                     key={f.t}
                     style={{
-                      fontFamily: "'Barlow', sans-serif",
-                      fontSize: "0.82rem",
+                      fontFamily: "'Lato', sans-serif",
+                      fontSize: "0.9rem",
                       fontWeight: f.ok ? 400 : 300,
                       color: f.ok
                         ? "rgba(242,239,228,0.75)"
@@ -306,7 +306,7 @@ export default function Plans() {
                       display: "flex",
                       alignItems: "center",
                       gap: "0.75rem",
-                      letterSpacing: "0.01em",
+                      letterSpacing: "0.02em",
                     }}
                   >
                     {f.ok ? (

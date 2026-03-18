@@ -111,7 +111,7 @@ export default function About() {
                 fontFamily: "'Bebas Neue', sans-serif",
                 fontWeight: 800,
                 fontSize: "1.75rem",
-                letterSpacing: "0.2em",
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: C.gold,
                 lineHeight: 1.2,
@@ -137,8 +137,8 @@ export default function About() {
             <div
               className="about-founded-year"
               style={{
-                fontSize: "3rem",
-                fontWeight: 800,
+                fontSize: "3.2rem",
+                fontWeight: 700,
                 lineHeight: 1,
               }}
             >
@@ -146,8 +146,8 @@ export default function About() {
             </div>
             <div
               style={{
-                fontSize: "0.8rem",
-                fontWeight: 600,
+                fontSize: "0.9rem",
+                fontWeight: 700,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
               }}
@@ -193,7 +193,7 @@ export default function About() {
               fontSize: "clamp(2.8rem,6vw,5.5rem)",
               fontWeight: 800,
               lineHeight: 0.95,
-              letterSpacing: "0.03em",
+              letterSpacing: "0.015em",
               color: C.offwhite,
               margin: "0 0 1.5rem",
             }}
@@ -217,7 +217,7 @@ export default function About() {
           >
             Fitness Sports Center was built on a simple belief: every person
             carries untapped potential. We created a space where ambition meets
-            action — where your goals aren't just supported, they're forged into
+            action - where your goals aren't just supported, they're forged into
             reality.
           </p>
           <p

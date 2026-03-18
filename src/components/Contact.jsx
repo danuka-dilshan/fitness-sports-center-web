@@ -16,7 +16,7 @@ function SubmitBtn({ onClick, sending }) {
         border: "none",
         cursor: "pointer",
         fontFamily: "'Montserrat', sans-serif",
-        fontSize: "0.72rem",
+        fontSize: "0.95rem",
         fontWeight: 700,
         letterSpacing: "0.18em",
         textTransform: "uppercase",
@@ -24,7 +24,7 @@ function SubmitBtn({ onClick, sending }) {
         color: C.black,
         transition: "background .2s",
         opacity: sending ? 0.7 : 1,
-        borderRadius: "4px",
+        borderRadius: "6px",
       }}
     >
       {sending ? "Sending..." : "Send Message"}
@@ -87,7 +87,7 @@ const contactItems = [
   },
   {
     label: "Hours",
-    val: "Mon–Fri 5AM–11PM · Sat–Sun 6AM–10PM",
+    val: "Mon to Fri 5AM–11PM / Sat to Sun 6AM–10PM",
     svg: (
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
         <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.3" />
@@ -231,8 +231,8 @@ export default function Contact() {
           <Reveal delay={0.2}>
             <p
               style={{
-                fontFamily: "'Barlow', sans-serif",
-                fontSize: "0.95rem",
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "1.0rem",
                 fontWeight: 300,
                 lineHeight: 1.8,
                 color: C.gray,
@@ -276,8 +276,8 @@ export default function Contact() {
                     style={{
                       fontFamily: "'Montserrat', sans-serif",
                       fontWeight: 600,
-                      fontSize: "0.62rem",
-                      letterSpacing: "0.18em",
+                      fontSize: "0.66rem",
+                      letterSpacing: "0.15em",
                       textTransform: "uppercase",
                       color: C.gold,
                       marginBottom: "0.3rem",
@@ -289,9 +289,10 @@ export default function Contact() {
                     style={{
                       fontFamily: "'Barlow', sans-serif",
                       fontSize: "0.85rem",
-                      fontWeight: 300,
+                      fontWeight: 500,
                       color: C.gray,
                       lineHeight: 1.6,
+                      letterSpacing: "0.03em",
                     }}
                   >
                     {val}
@@ -318,7 +319,7 @@ export default function Contact() {
                   style={{
                     fontFamily: "'Barlow Condensed', sans-serif",
                     fontWeight: 800,
-                    fontSize: "1.7rem",
+                    fontSize: "1.8rem",
                     letterSpacing: "0.04em",
                     color: C.offwhite,
                     marginBottom: "0.4rem",
@@ -328,8 +329,8 @@ export default function Contact() {
                 </div>
                 <p
                   style={{
-                    fontFamily: "'Barlow', sans-serif",
-                    fontSize: "0.82rem",
+                    fontFamily: "'Lato', sans-serif",
+                    fontSize: "0.85rem",
                     fontWeight: 300,
                     color: C.gray,
                     marginBottom: "2rem",
@@ -503,8 +504,8 @@ export default function Contact() {
                 </h3>
                 <p
                   style={{
-                    fontFamily: "'Barlow', sans-serif",
-                    fontSize: "0.9rem",
+                    fontFamily: "'Lato', sans-serif",
+                    fontSize: "1.0rem",
                     fontWeight: 300,
                     color: C.gray,
                     lineHeight: 1.7,

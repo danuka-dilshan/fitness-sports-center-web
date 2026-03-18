@@ -44,12 +44,12 @@ export default function Footer() {
           <img
             src={LOGO}
             alt="Fitness Sports Center"
-            style={{ height: 70, objectFit: "contain", marginBottom: "1.2rem" }}
+            style={{ height: 120, objectFit: "contain", marginBottom: "1.1rem", marginTop: "-0.8rem", marginLeft: "1.5rem" }}
           />
           <p
             style={{
-              fontFamily: "'Barlow', sans-serif",
-              fontSize: "0.82rem",
+              fontFamily: "'Lato', sans-serif",
+              fontSize: "0.84rem",
               fontWeight: 300,
               color: C.gray,
               lineHeight: 1.7,
@@ -117,7 +117,7 @@ export default function Footer() {
           {[
             {
               title: "Navigate",
-              links: ["About", "Services", "Plans", "Trainers", "Contact"],
+              links: ["About", "Services", "Plans", "Contact"],
             },
             {
               title: "Programs",
@@ -139,8 +139,8 @@ export default function Footer() {
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 600,
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.22em",
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.13em",
                   textTransform: "uppercase",
                   color: C.offwhite,
                   marginBottom: "1.4rem",
@@ -154,7 +154,7 @@ export default function Footer() {
                     <a
                       href="#"
                       style={{
-                        fontFamily: "'Barlow', sans-serif",
+                        fontFamily: "'Lato', sans-serif",
                         fontSize: "0.83rem",
                         fontWeight: 300,
                         color: C.gray,
