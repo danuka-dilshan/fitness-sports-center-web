@@ -5,6 +5,7 @@ export default function About() {
   return (
     <section
       id="about"
+      className="about-grid"
       style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -14,28 +15,58 @@ export default function About() {
       }}
     >
       <style>{`
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6rem;
+          align-items: center;
+          padding: 8rem 5vw;
+        }
+
         @media (max-width: 768px) {
           .about-grid {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+            gap: 4rem !important;
             padding: 5rem 5vw !important;
           }
           .about-image-wrap {
             aspect-ratio: 4/3 !important;
           }
+          .about-image-label {
+            font-size: clamp(0.85rem, 4vw, 1.2rem) !important;
+            right: 7rem !important;
+            bottom: 1rem !important;
+            left: 1rem !important;
+          }
           .about-founded {
-            bottom: -1rem !important;
-            right: -0.5rem !important;
-            padding: 1rem 1.4rem !important;
+            padding: 1rem 1.2rem !important;
           }
           .about-founded-year {
-            font-size: 2rem !important;
+            font-size: 2.2rem !important;
           }
           .about-features {
             grid-template-columns: 1fr 1fr !important;
           }
         }
+
         @media (max-width: 480px) {
+          .about-grid {
+            padding: 4rem 4vw !important;
+            gap: 3.5rem !important;
+          }
+          .about-image-wrap {
+            aspect-ratio: 3/2 !important;
+          }
+          .about-image-label {
+            font-size: clamp(0.75rem, 3.5vw, 1rem) !important;
+            right: 6.5rem !important;
+          }
+          .about-founded {
+            padding: 0.8rem 1rem !important;
+          }
+          .about-founded-year {
+            font-size: 1.8rem !important;
+          }
           .about-features {
             grid-template-columns: 1fr !important;
           }
@@ -43,12 +74,12 @@ export default function About() {
       `}</style>
 
       <Reveal>
-        <div style={{ position: "relative" }}>
+        <div style={{ position: "relative", marginBottom: "2.5rem" }}>
           <div
             className="about-image-wrap"
             style={{
               width: "100%",
-              aspectRatio: "3/4",
+              aspectRatio: "1/1",
               background: C.brown,
               position: "relative",
               overflow: "hidden",
@@ -60,7 +91,7 @@ export default function About() {
             <img
               src={LOGO}
               alt="Logo"
-              style={{ width: "70%", objectFit: "contain", opacity: 0.7 }}
+              style={{ width: "85%", objectFit: "contain", opacity: 0.9 }}
             />
             <div
               style={{
@@ -71,31 +102,36 @@ export default function About() {
               }}
             />
             <div
+              className="about-image-label"
               style={{
                 position: "absolute",
                 bottom: "2rem",
                 left: "2rem",
-                fontFamily: "'Barlow Condensed',sans-serif",
+                right: "8rem",
+                fontFamily: "'Bebas Neue', sans-serif",
                 fontWeight: 800,
-                fontSize: "0.8rem",
+                fontSize: "1.75rem",
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
                 color: C.gold,
+                lineHeight: 1.2,
               }}
             >
               Fitness Sports Center
             </div>
           </div>
+
           <div
             className="about-founded"
             style={{
               position: "absolute",
-              bottom: "-1.5rem",
-              right: "-1.5rem",
+              bottom: 0,
+              right: 0,
               background: C.gold,
               padding: "1.5rem 2rem",
-              fontFamily: "'Barlow Condensed',sans-serif",
+              fontFamily: "'Barlow Condensed', sans-serif",
               color: C.black,
+              zIndex: 2,
             }}
           >
             <div
@@ -149,13 +185,15 @@ export default function About() {
             Our Story
           </div>
         </Reveal>
+
         <Reveal delay={0.1}>
           <h2
             style={{
-              fontFamily: "'Barlow Condensed',sans-serif",
+              fontFamily: "'Bebas Neue', 'Barlow Condensed', sans-serif",
               fontSize: "clamp(2.8rem,6vw,5.5rem)",
               fontWeight: 800,
               lineHeight: 0.95,
+              letterSpacing: "0.03em",
               color: C.offwhite,
               margin: "0 0 1.5rem",
             }}
@@ -164,15 +202,17 @@ export default function About() {
             <br />A GYM
           </h2>
         </Reveal>
+
         <Reveal delay={0.2}>
           <p
             style={{
-              fontFamily: "'Barlow',sans-serif",
+              fontFamily: "'Lato', sans-serif",
               fontSize: "0.95rem",
               fontWeight: 300,
               lineHeight: 1.8,
               color: C.gray,
               marginBottom: "1rem",
+              letterSpacing: "0.01em",
             }}
           >
             Fitness Sports Center was built on a simple belief: every person
@@ -182,12 +222,13 @@ export default function About() {
           </p>
           <p
             style={{
-              fontFamily: "'Barlow',sans-serif",
+              fontFamily: "'Lato', sans-serif",
               fontSize: "0.95rem",
               fontWeight: 300,
               lineHeight: 1.8,
               color: C.gray,
               marginBottom: "2.5rem",
+              letterSpacing: "0.01em",
             }}
           >
             From beginner to elite athlete, our facility offers the tools,
@@ -195,6 +236,7 @@ export default function About() {
             were possible.
           </p>
         </Reveal>
+
         <Reveal delay={0.3}>
           <div
             className="about-features"
@@ -226,7 +268,7 @@ export default function About() {
                 <div
                   style={{
                     fontFamily: "'Barlow Condensed',sans-serif",
-                    fontSize: "1.6rem",
+                    fontSize: "2rem",
                     fontWeight: 800,
                     lineHeight: 1,
                     color: C.gold,
@@ -238,10 +280,10 @@ export default function About() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'Barlow Condensed',sans-serif",
-                    fontSize: "0.88rem",
+                    fontFamily: "'Lato', sans-serif",
+                    fontSize: "1.2rem",
                     fontWeight: 700,
-                    letterSpacing: "0.08em",
+                    letterSpacing: "0.05em",
                     textTransform: "uppercase",
                     color: C.offwhite,
                     marginBottom: "0.4rem",
@@ -251,11 +293,12 @@ export default function About() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'Barlow',sans-serif",
-                    fontSize: "0.8rem",
+                    fontFamily: "'Lato', sans-serif",
+                    fontSize: "1rem",
                     fontWeight: 300,
                     color: C.gray,
                     lineHeight: 1.5,
+                    letterSpacing: "0.01em",
                   }}
                 >
                   {desc}
@@ -265,12 +308,6 @@ export default function About() {
           </div>
         </Reveal>
       </div>
-
-      <style>{`
-        #about {
-          display: grid;
-        }
-      `}</style>
     </section>
   );
 }

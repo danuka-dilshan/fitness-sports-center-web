@@ -15,7 +15,9 @@ export default function Nav() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
@@ -100,55 +102,85 @@ export default function Nav() {
         .nav-link-item:hover { color: ${C.gold}; }
       `}</style>
 
-      <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "0 5vw", height: 68,
-        background: scrolled || open
-          ? "rgba(8,8,8,0.96)"
-          : "rgba(8,8,8,0.6)",
-        backdropFilter: "blur(14px)",
-        borderBottom: `1px solid ${scrolled || open ? C.charcoal : "rgba(242,239,228,0.06)"}`,
-        transition: "all .35s",
-      }}>
-
+      <nav
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 200,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 5vw",
+          height: 68,
+          background: scrolled || open ? "rgba(8,8,8,0.96)" : "rgba(8,8,8,0.6)",
+          backdropFilter: "blur(14px)",
+          borderBottom: `1px solid ${scrolled || open ? C.charcoal : "rgba(242,239,228,0.06)"}`,
+          transition: "all .35s",
+        }}
+      >
         {/* Logo */}
-        <img src={LOGO} alt="Fitness Sports Center"
-          style={{ height: 52, objectFit: "contain", zIndex: 201 }} />
+        <img
+          src={LOGO}
+          alt="Fitness Sports Center"
+          style={{ height: 52, objectFit: "contain", zIndex: 201 }}
+        />
 
         {/* Desktop Links */}
-        <ul className="nav-links" style={{
-          gap: "2rem", listStyle: "none", margin: 0, padding: 0,
-        }}>
-          {links.map(l => (
+        <ul
+          className="nav-links"
+          style={{
+            gap: "2rem",
+            listStyle: "none",
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          {links.map((l) => (
             <li key={l}>
-              <a href={`#${l.toLowerCase()}`} className="nav-link-item">{l}</a>
+              <a href={`#${l.toLowerCase()}`} className="nav-link-item">
+                {l}
+              </a>
             </li>
           ))}
         </ul>
 
         {/* Desktop CTA */}
-        <a href="#contact" className="nav-cta" style={{
-          fontFamily: "'Montserrat', sans-serif",
-          fontSize: "0.72rem", fontWeight: 700,
-          letterSpacing: "0.16em", textTransform: "uppercase",
-          padding: "0.65rem 1.6rem",
-          background: C.gold, color: C.black,
-          textDecoration: "none", transition: "background .2s",
-          borderRadius: "8px",
-        }}
-        onMouseEnter={e => e.target.style.background = C.goldDim}
-        onMouseLeave={e => e.target.style.background = C.gold}
-        >Join Now</a>
+        <a
+          href="#contact"
+          className="nav-cta"
+          style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: "0.9rem",
+            fontWeight: 900,
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            padding: "0.65rem 1.6rem",
+            background: C.gold,
+            color: C.black,
+            textDecoration: "none",
+            transition: "background .2s",
+            borderRadius: "8px",
+          }}
+          onMouseEnter={(e) => (e.target.style.background = C.goldDim)}
+          onMouseLeave={(e) => (e.target.style.background = C.gold)}
+        >
+          Join Now
+        </a>
 
         {/* Burger */}
         <button
           className={`burger${open ? " is-open" : ""}`}
-          onClick={() => setOpen(o => !o)}
+          onClick={() => setOpen((o) => !o)}
           style={{
-            flexDirection: "column", gap: 5,
-            background: "none", border: "none",
-            cursor: "pointer", padding: 6, zIndex: 201,
+            flexDirection: "column",
+            gap: 5,
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: 6,
+            zIndex: 201,
           }}
           aria-label="Toggle menu"
         >
@@ -160,11 +192,21 @@ export default function Nav() {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu${open ? " is-open" : ""}`}>
-        {links.map(l => (
-          <a key={l} href={`#${l.toLowerCase()}`}
-            className="mobile-link" onClick={() => setOpen(false)}>{l}</a>
+        {links.map((l) => (
+          <a
+            key={l}
+            href={`#${l.toLowerCase()}`}
+            className="mobile-link"
+            onClick={() => setOpen(false)}
+          >
+            {l}
+          </a>
         ))}
-        <a href="#contact" className="mobile-cta" onClick={() => setOpen(false)}>
+        <a
+          href="#contact"
+          className="mobile-cta"
+          onClick={() => setOpen(false)}
+        >
           Join Now
         </a>
       </div>
