@@ -1,14 +1,14 @@
 import "./styles/global.css";
 import FontLoader from "./components/FontLoader";
-import Nav from "./components/Nav";
+import Nav from "./components/Nav/Nav";
 import { C } from "./constants";
-import Hero from "./components/Hero";
-import Marquee from "./components/Marquee";
-import About from "./components/About";
-import Services from "./components/Services";
-import Plans from "./components/Plans";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import Hero from "./components/Hero/Hero";
+import Marquee from "./components/Marquee/Marquee";
+import About from "./components/About/About";
+import Services from "./components/Services/Services";
+import Plans from "./components/Plans/Plans";
+import Contact from "./components/Contact/Contact";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
   return (

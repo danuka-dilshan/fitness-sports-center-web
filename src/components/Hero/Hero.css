@@ -1,0 +1,334 @@
+/* ── Hero Section ── */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  padding: 0 5vw 10vh;
+  overflow: hidden;
+  background: #080808;
+}
+
+/* ── Background grid ── */
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1) 3px, transparent 5px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 5px, transparent 3px);
+  background-size: 55px 55px;
+}
+
+/* ── Hero image ── */
+.hero-image-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── Overlays ── */
+.hero-fade-bottom {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 8, 8, 0.15) 0%,
+    rgba(8, 8, 8, 0.45) 50%,
+    rgba(8, 8, 8, 0.95) 100%
+  );
+}
+
+.hero-fade-left {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    rgba(8, 8, 8, 0.85) 0%,
+    rgba(8, 8, 8, 0.5) 40%,
+    transparent 70%
+  );
+}
+
+.hero-gold-radial {
+  position: absolute;
+  top: -15vh;
+  right: -10vw;
+  width: 60vw;
+  height: 60vw;
+  max-width: 700px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(
+    circle,
+    rgba(207, 160, 16, 0.1) 0%,
+    transparent 70%
+  );
+}
+
+/* ── Bottom row ── */
+.hero-bottom {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  gap: 2rem;
+}
+
+/* ── Main content ── */
+.hero-main {
+  max-width: 740px;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: #cfa010;
+  margin-bottom: 1.2rem;
+}
+
+.hero-eyebrow-line {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: #cfa010;
+}
+
+.hero-h1 {
+  font-family: "Bebas Neue", "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: clamp(4rem, 11vw, 10rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.6rem;
+  color: #f2efe4;
+}
+
+.hero-h1-gold {
+  color: #cfa010;
+}
+
+.hero-body-text {
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #6b6b60;
+  max-width: 460px;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── Buttons ── */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.hero-btn-primary {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 1rem 2.2rem;
+  background: #cfa010;
+  color: #080808;
+  text-decoration: none;
+  transition: background 0.2s;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.hero-btn-primary:hover {
+  background: #a07c08;
+}
+
+.hero-btn-secondary {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 1.18rem 3.3rem;
+  border: 1px solid rgba(242, 239, 228, 0.2);
+  color: #f2efe4;
+  text-decoration: none;
+  transition: border-color 0.2s;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.hero-btn-secondary:hover {
+  border-color: #f2efe4;
+}
+
+/* ── Stats ── */
+.hero-stats {
+  position: absolute;
+  bottom: 0;
+  right: 5vw;
+  z-index: 3;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.hero-stat-item {
+  text-align: right;
+}
+
+.hero-stat-number {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 800;
+  font-size: 2.8rem;
+  line-height: 1;
+  color: #cfa010;
+}
+
+.hero-stat-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b6b60;
+  margin-top: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-section {
+    align-items: flex-start !important;
+    padding: 0 !important;
+    min-height: 100vh !important;
+    justify-content: flex-end !important;
+    flex-direction: column !important;
+  }
+  .hero-image-wrap {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 1 !important;
+  }
+  .hero-image-wrap img {
+    object-position: 70% top !important;
+  }
+  .hero-fade-bottom {
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 8, 8, 0) 0%,
+      rgba(8, 8, 8, 0.3) 30%,
+      rgba(8, 8, 8, 0.85) 55%,
+      rgba(8, 8, 8, 1) 72%
+    ) !important;
+  }
+  .hero-bottom {
+    position: relative !important;
+    z-index: 3 !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    padding: 0 5vw 2.5rem !important;
+    gap: 0 !important;
+  }
+  .hero-main {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .hero-h1 {
+    font-size: clamp(3.4rem, 16vw, 5.5rem) !important;
+    margin-bottom: 0.8rem !important;
+    line-height: 0.88 !important;
+  }
+  .hero-body-text {
+    font-size: 0.9rem !important;
+    margin-bottom: 1.6rem !important;
+    max-width: 100% !important;
+  }
+  .hero-buttons {
+    flex-wrap: nowrap !important;
+    gap: 0.75rem !important;
+  }
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    padding: 0.85rem 1.6rem !important;
+    font-size: 0.72rem !important;
+  }
+  .hero-stats {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    flex-wrap: nowrap !important;
+    margin-top: 1.8rem !important;
+    padding-top: 1.4rem !important;
+    border-top: 1px solid rgba(242, 239, 228, 0.12) !important;
+  }
+  .hero-stats > div {
+    text-align: left !important;
+    padding: 0 0.8rem !important;
+  }
+  .hero-stats > div:first-child {
+    padding-left: 0 !important;
+  }
+  .hero-stats > div:last-child {
+    padding-right: 0 !important;
+  }
+  .hero-stats > div:not(:last-child) {
+    border-right: 1px solid rgba(242, 239, 228, 0.12) !important;
+  }
+  .hero-stat-number {
+    font-size: 2.2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-h1 {
+    font-size: clamp(3rem, 15vw, 4.5rem) !important;
+  }
+  .hero-stat-number {
+    font-size: 1.9rem !important;
+  }
+  .hero-stats > div {
+    padding: 0 0.5rem !important;
+  }
+  .hero-stats > div:first-child {
+    padding-left: 0 !important;
+  }
+}

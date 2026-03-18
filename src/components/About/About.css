@@ -1,3 +1,14 @@
+/* ── Color tokens (from constants.js) ── */
+:root {
+  --color-gold: #cfa010;
+  --color-gold-dim: #a07c08;
+  --color-brown: #231f0e;
+  --color-black: #080808;
+  --color-charcoal: #2e2e2e;
+  --color-offwhite: #f2efe4;
+  --color-gray: #6b6b60;
+}
+
 /* ── About Section ── */
 .about-grid {
   display: grid;
@@ -27,7 +38,11 @@
 .about-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(8, 8, 8, 0.85) 100%);
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(8, 8, 8, 0.85) 100%
+  );
 }
 
 .about-image-label {
@@ -35,7 +50,7 @@
   bottom: 2rem;
   left: 2rem;
   right: 8rem;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-weight: 800;
   font-size: 1.75rem;
   letter-spacing: 0.12em;
@@ -55,7 +70,7 @@
   right: 0;
   background: var(--color-gold);
   padding: 1.5rem 2rem;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: "Barlow Condensed", sans-serif;
   color: var(--color-black);
   z-index: 2;
 }
@@ -83,7 +98,7 @@
   text-transform: uppercase;
   color: var(--color-gold);
   margin-bottom: 1rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .about-eyebrow-line {
@@ -94,7 +109,7 @@
 }
 
 .about-heading {
-  font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif;
+  font-family: "Bebas Neue", "Barlow Condensed", sans-serif;
   font-size: clamp(2.8rem, 6vw, 5.5rem);
   font-weight: 800;
   line-height: 0.95;
@@ -104,7 +119,7 @@
 }
 
 .about-body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 0.95rem;
   font-weight: 300;
   line-height: 1.8;
@@ -130,7 +145,7 @@
 }
 
 .about-feature-abbr {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: "Barlow Condensed", sans-serif;
   font-size: 2rem;
   font-weight: 800;
   line-height: 1;
@@ -140,7 +155,7 @@
 }
 
 .about-feature-title {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -150,7 +165,7 @@
 }
 
 .about-feature-desc {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 1rem;
   font-weight: 300;
   color: var(--color-gray);

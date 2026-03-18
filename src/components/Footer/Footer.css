@@ -1,0 +1,149 @@
+/* ── Footer ── */
+footer {
+  background: #231f0e;
+  border-top: 1px solid #2e2e2e;
+  padding: 4rem 5vw 2rem;
+}
+
+/* ── Top grid ── */
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+/* ── Brand column ── */
+.footer-brand {
+  max-width: 260px;
+}
+
+.footer-logo {
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 1.1rem;
+  margin-top: -0.8rem;
+  margin-left: 1.5rem;
+}
+
+.footer-tagline {
+  font-family: "Lato", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 300;
+  color: #6b6b60;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Social icons ── */
+.footer-socials {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.footer-social-link {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid rgba(242, 239, 228, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+  text-decoration: none;
+}
+
+.footer-social-link:hover {
+  border-color: #cfa010;
+  background: rgba(207, 160, 16, 0.08);
+}
+
+/* ── Links columns ── */
+.footer-links-wrap {
+  display: flex;
+  gap: 3rem;
+}
+
+.footer-links-group-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #f2efe4;
+  margin-bottom: 1.4rem;
+}
+
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links-list li {
+  margin-bottom: 0.65rem;
+}
+
+.footer-link {
+  font-family: "Lato", sans-serif;
+  font-size: 0.83rem;
+  font-weight: 300;
+  color: #6b6b60;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #cfa010;
+}
+
+/* ── Bottom bar ── */
+.footer-bottom {
+  border-top: 1px solid #2e2e2e;
+  padding-top: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer-copyright {
+  font-family: "Barlow", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(242, 239, 228, 0.3);
+  letter-spacing: 0.02em;
+}
+
+.footer-tagline-bottom {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: rgba(242, 239, 228, 0.2);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .footer-grid {
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+  }
+  .footer-bottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  .footer-links-wrap {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+    width: 100% !important;
+  }
+}
