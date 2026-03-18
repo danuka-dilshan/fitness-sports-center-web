@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
+import { C } from "../../constants";
 import Reveal from "../Reveal";
 import "./Contact.css";
 
-function SubmitBtn({ onClick, sending }) {
-  return (
-    <button className="contact-submit-btn" onClick={onClick} disabled={sending}>
-      {sending ? "Sending..." : "Send Message"}
-    </button>
-  );
-}
+// ── Replace these with your EmailJS keys ──
+const EMAILJS_SERVICE_ID = "service_j5tmx6s";
+const EMAILJS_TEMPLATE_ID = "template_14pp2f2";
+const EMAILJS_PUBLIC_KEY = "KvuX94v-iGkHy03Ob";
+
+const MAX_MESSAGE = 500;
 
 const contactItems = [
   {
@@ -89,6 +90,28 @@ const INTERESTS = [
   "Nutrition Coaching",
 ];
 
+// ── Validation rules ──
+const validators = {
+  name: (v) =>
+    !v.trim()
+      ? "Please enter your name."
+      : v.trim().length < 2
+        ? "Name is too short."
+        : "",
+  email: (v) =>
+    !v.trim()
+      ? "Please enter your email."
+      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+        ? "Please enter a valid email."
+        : "",
+  message: (v) =>
+    !v.trim()
+      ? "Please enter a message."
+      : v.trim().length < 10
+        ? "Message is too short (min 10 chars)."
+        : "",
+};
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -97,35 +120,81 @@ export default function Contact() {
     message: "",
   });
   const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
+  const [touched, setTouched] = useState({});
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [showLog, setShowLog] = useState(false);
+  const [log, setLog] = useState([]);
 
-  const validate = () => {
-    const e = {};
-    if (!form.name.trim()) e.name = "Please enter your name.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = "Please enter a valid email.";
-    if (!form.message.trim()) e.message = "Please enter a message.";
-    return e;
-  };
+  // Load submission log from localStorage
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("contact_log") || "[]");
+    setLog(saved);
+  }, []);
 
-  const handleSubmit = () => {
-    const e = validate();
-    if (Object.keys(e).length) {
-      setErrors(e);
-      return;
-    }
-    setSending(true);
-    setTimeout(() => {
-      setSending(false);
-      setSent(true);
-    }, 900);
-  };
+  // Real-time validation on touched fields
+  useEffect(() => {
+    const newErrors = {};
+    Object.keys(touched).forEach((key) => {
+      if (validators[key]) {
+        const err = validators[key](form[key]);
+        if (err) newErrors[key] = err;
+      }
+    });
+    setErrors(newErrors);
+  }, [form, touched]);
 
-  const updateField = (key) => (e) => {
+  const handleBlur = (key) => () => setTouched((t) => ({ ...t, [key]: true }));
+
+  const updateField = (key) => (e) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));
-    setErrors((err) => ({ ...err, [key]: "" }));
+
+  const isFormValid = () =>
+    Object.keys(validators).every((key) => !validators[key](form[key]));
+
+  const handleSubmit = async () => {
+    // Touch all fields to show all errors
+    setTouched({ name: true, email: true, message: true });
+    if (!isFormValid()) return;
+
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          interest: form.interest || "Not specified",
+          message: form.message,
+        },
+        EMAILJS_PUBLIC_KEY,
+      );
+
+      // Save to localStorage log
+      const newEntry = { ...form, date: new Date().toISOString() };
+      const updated = [newEntry, ...log];
+      localStorage.setItem("contact_log", JSON.stringify(updated));
+      setLog(updated);
+      setStatus("success");
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      setStatus("error");
+    }
   };
+
+  const handleReset = () => {
+    setForm({ name: "", email: "", interest: "", message: "" });
+    setErrors({});
+    setTouched({});
+    setStatus("idle");
+  };
+
+  const clearLog = () => {
+    localStorage.removeItem("contact_log");
+    setLog([]);
+  };
+
+  const charsLeft = MAX_MESSAGE - form.message.length;
 
   return (
     <section id="contact" className="contact-section">
@@ -165,12 +234,53 @@ export default function Contact() {
               </div>
             ))}
           </Reveal>
+
+          {/* ── Submission log toggle ── */}
+          {log.length > 0 && (
+            <Reveal delay={0.4}>
+              <button
+                className="contact-log-toggle"
+                onClick={() => setShowLog((v) => !v)}
+              >
+                {showLog ? "Hide" : "View"} Submission History ({log.length})
+              </button>
+
+              {showLog && (
+                <div className="contact-log">
+                  <div className="contact-log-header">
+                    <span>Recent Submissions</span>
+                    <button onClick={clearLog}>Clear All</button>
+                  </div>
+                  {log.map((entry, i) => (
+                    <div key={i} className="contact-log-item">
+                      <div className="contact-log-name">{entry.name}</div>
+                      <div className="contact-log-meta">{entry.email}</div>
+                      {entry.interest && (
+                        <div className="contact-log-meta">{entry.interest}</div>
+                      )}
+                      <div className="contact-log-date">
+                        {new Date(entry.date).toLocaleString()}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </Reveal>
+          )}
         </div>
 
         {/* ── Right column: form ── */}
         <Reveal delay={0.2}>
           <div className="contact-form-card">
-            {!sent ? (
+            {/* Error toast */}
+            {status === "error" && (
+              <div className="contact-toast contact-toast--error">
+                ⚠ Something went wrong. Please try again.
+                <button onClick={() => setStatus("idle")}>✕</button>
+              </div>
+            )}
+
+            {status !== "success" ? (
               <>
                 <div className="contact-form-title">Send a Message</div>
                 <p className="contact-form-subtitle">
@@ -200,10 +310,19 @@ export default function Contact() {
                         value={form[key]}
                         placeholder={placeholder}
                         onChange={updateField(key)}
-                        className={`contact-form-input${errors[key] ? " error" : ""}`}
+                        onBlur={handleBlur(key)}
+                        className={`contact-form-input${errors[key] ? " error" : touched[key] && !errors[key] ? " valid" : ""}`}
                       />
-                      {errors[key] && (
-                        <div className="contact-form-error">{errors[key]}</div>
+                      {errors[key] ? (
+                        <div className="contact-form-error">
+                          ⚠ {errors[key]}
+                        </div>
+                      ) : (
+                        touched[key] && (
+                          <div className="contact-form-success-msg">
+                            ✓ Looks good!
+                          </div>
+                        )
                       )}
                     </div>
                   ))}
@@ -228,22 +347,50 @@ export default function Contact() {
                   </select>
                 </div>
 
-                {/* Message */}
+                {/* Message + character counter */}
                 <div className="contact-form-message-group">
-                  <label className="contact-form-label">Message</label>
+                  <div className="contact-form-label-row">
+                    <label className="contact-form-label">Message</label>
+                    <span
+                      className={`contact-char-counter${charsLeft < 50 ? " warning" : ""}`}
+                    >
+                      {charsLeft} / {MAX_MESSAGE}
+                    </span>
+                  </div>
                   <textarea
                     rows={4}
                     value={form.message}
                     placeholder="Tell us about your goals..."
+                    maxLength={MAX_MESSAGE}
                     onChange={updateField("message")}
-                    className={`contact-form-textarea${errors.message ? " error" : ""}`}
+                    onBlur={handleBlur("message")}
+                    className={`contact-form-textarea${errors.message ? " error" : touched.message && !errors.message ? " valid" : ""}`}
                   />
-                  {errors.message && (
-                    <div className="contact-form-error">{errors.message}</div>
+                  {errors.message ? (
+                    <div className="contact-form-error">⚠ {errors.message}</div>
+                  ) : (
+                    touched.message && (
+                      <div className="contact-form-success-msg">
+                        ✓ Looks good!
+                      </div>
+                    )
                   )}
                 </div>
 
-                <SubmitBtn onClick={handleSubmit} sending={sending} />
+                {/* Submit */}
+                <button
+                  className="contact-submit-btn"
+                  onClick={handleSubmit}
+                  disabled={status === "sending"}
+                >
+                  {status === "sending" ? (
+                    <span className="contact-btn-spinner">
+                      <span className="contact-spinner" /> Sending...
+                    </span>
+                  ) : (
+                    "Send Message"
+                  )}
+                </button>
               </>
             ) : (
               <div className="contact-success">
@@ -263,6 +410,9 @@ export default function Contact() {
                   Thanks for reaching out. We'll be in touch within 24 hours to
                   discuss your fitness journey.
                 </p>
+                <button className="contact-success-btn" onClick={handleReset}>
+                  Send Another
+                </button>
               </div>
             )}
           </div>
