@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { C } from "../../constants";
 import Reveal from "../Reveal";
 import "./Plans.css";
@@ -85,10 +86,48 @@ function CrossIcon() {
   );
 }
 
+function PlanCard({ p }) {
+  return (
+    <div className={`plan-card${p.featured ? " plan-card--featured" : ""}`}>
+      {p.featured && <div className="plan-badge">Most Popular</div>}
+      <div className={`plan-name${p.featured ? " plan-name--featured" : ""}`}>
+        {p.name}
+      </div>
+      <div className="plan-price">
+        <span className="plan-price-currency">$</span>
+        <span className="plan-price-amount">{p.price}</span>
+        <span className="plan-price-period">/mo</span>
+      </div>
+      <div className="plan-divider" />
+      <ul className="plan-features">
+        {p.features.map((f) => (
+          <li
+            key={f.t}
+            className={`plan-feature-item${!f.ok ? " plan-feature-item--disabled" : ""}`}
+          >
+            {f.ok ? <CheckIcon /> : <CrossIcon />}
+            {f.t}
+          </li>
+        ))}
+      </ul>
+      <a
+        href="#contact"
+        className={`plan-btn${p.featured ? " plan-btn--featured" : ""}`}
+      >
+        Get Started
+      </a>
+    </div>
+  );
+}
+
 export default function Plans() {
+  const [active, setActive] = useState(1); // start on Pro (featured)
+
+  const prev = () => setActive((a) => (a - 1 + PLANS.length) % PLANS.length);
+  const next = () => setActive((a) => (a + 1) % PLANS.length);
+
   return (
     <section id="plans" className="plans-section">
-      {/* Header */}
       <Reveal>
         <div className="plans-eyebrow">
           <span className="plans-eyebrow-line" />
@@ -111,56 +150,66 @@ export default function Plans() {
         </p>
       </Reveal>
 
-      {/* Cards */}
+      {/* Desktop grid */}
       <div className="plans-grid">
         {PLANS.map((p, i) => (
           <Reveal key={p.name} delay={i * 0.1}>
-            <div
-              className={`plan-card${p.featured ? " plan-card--featured" : ""}`}
-            >
-              {/* Badge */}
-              {p.featured && <div className="plan-badge">Most Popular</div>}
-
-              {/* Plan name */}
-              <div
-                className={`plan-name${p.featured ? " plan-name--featured" : ""}`}
-              >
-                {p.name}
-              </div>
-
-              {/* Price */}
-              <div className="plan-price">
-                <span className="plan-price-currency">$</span>
-                <span className="plan-price-amount">{p.price}</span>
-                <span className="plan-price-period">/mo</span>
-              </div>
-
-              {/* Divider */}
-              <div className="plan-divider" />
-
-              {/* Features */}
-              <ul className="plan-features">
-                {p.features.map((f) => (
-                  <li
-                    key={f.t}
-                    className={`plan-feature-item${!f.ok ? " plan-feature-item--disabled" : ""}`}
-                  >
-                    {f.ok ? <CheckIcon /> : <CrossIcon />}
-                    {f.t}
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
-              <a
-                href="#contact"
-                className={`plan-btn${p.featured ? " plan-btn--featured" : ""}`}
-              >
-                Get Started
-              </a>
-            </div>
+            <PlanCard p={p} />
           </Reveal>
         ))}
+      </div>
+
+      {/* Mobile slider */}
+      <div className="plans-mobile">
+        <div className="plans-mobile-slider">
+          <button
+            className="plans-arrow plans-arrow--left"
+            onClick={prev}
+            aria-label="Previous plan"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M13 4l-6 6 6 6"
+                stroke="#cfa010"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+
+          <div className="plans-mobile-card">
+            <PlanCard p={PLANS[active]} />
+          </div>
+
+          <button
+            className="plans-arrow plans-arrow--right"
+            onClick={next}
+            aria-label="Next plan"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M7 4l6 6-6 6"
+                stroke="#cfa010"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Dots */}
+        <div className="plans-dots">
+          {PLANS.map((p, i) => (
+            <button
+              key={p.name}
+              className={`plans-dot${i === active ? " plans-dot--active" : ""}`}
+              onClick={() => setActive(i)}
+              aria-label={p.name}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
