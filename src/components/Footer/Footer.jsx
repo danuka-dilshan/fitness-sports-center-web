@@ -23,21 +23,31 @@ const SOCIAL_ICONS = [
 const LINK_GROUPS = [
   {
     title: "Navigate",
-    links: ["About", "Services", "Plans", "Contact"],
+    links: [
+      { label: "About", href: "#about" },
+      { label: "Services", href: "#services" },
+      { label: "Plans", href: "#plans" },
+      { label: "Contact", href: "#contact" },
+    ],
   },
   {
     title: "Programs",
     links: [
-      "Strength Training",
-      "HIIT & Cardio",
-      "Personal Training",
-      "Group Classes",
-      "Nutrition",
+      { label: "Strength Training", href: "#strength" },
+      { label: "HIIT & Cardio", href: "#hiit" },
+      { label: "Personal Training", href: "#personal" },
+      { label: "Group Classes", href: "#group" },
+      { label: "Nutrition", href: "#nutrition" },
     ],
   },
   {
     title: "Connect",
-    links: ["Instagram", "Facebook", "YouTube", "TikTok"],
+    links: [
+      { label: "Instagram", href: "#" },
+      { label: "Facebook", href: "#" },
+      { label: "YouTube", href: "#" },
+      { label: "TikTok", href: "#" },
+    ],
   },
 ];
 
@@ -75,9 +85,9 @@ export default function Footer() {
               <div className="footer-links-group-title">{title}</div>
               <ul className="footer-links-list">
                 {links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="footer-link">
-                      {l}
+                  <li key={l.label} className="footer-link-item">
+                    <a href={l.href} className="footer-link">
+                      {l.label}
                     </a>
                   </li>
                 ))}
