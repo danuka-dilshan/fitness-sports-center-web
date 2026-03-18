@@ -9,11 +9,16 @@ import Services from "./components/Services/Services";
 import Plans from "./components/Plans/Plans";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import Loader from "./components/Loader/Loader";
+import { useState } from "react";
 
 export default function App() {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <>
       <FontLoader />
+      {!loaded && <Loader onComplete={() => setLoaded(true)} />}
       <div
         style={{
           fontFamily: "'Barlow Condensed','Oswald',sans-serif",
@@ -21,6 +26,7 @@ export default function App() {
           color: C.offwhite,
           overflowX: "hidden",
           minHeight: "100vh",
+          visibility: loaded ? "visible" : "hidden",
         }}
       >
         <Nav />
