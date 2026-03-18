@@ -5,9 +5,9 @@ import Reveal from "../Reveal";
 import "./Contact.css";
 
 // ── Replace these with your EmailJS keys ──
-const EMAILJS_SERVICE_ID = "service_j5tmx6s";
-const EMAILJS_TEMPLATE_ID = "template_14pp2f2";
-const EMAILJS_PUBLIC_KEY = "KvuX94v-iGkHy03Ob";
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || C.EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || C.EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || C.EMAILJS_PUBLIC_KEY;
 
 const MAX_MESSAGE = 500;
 
